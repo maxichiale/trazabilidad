@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument, degrees,rgb, StandardFonts } from "pdf-lib";
 import download from "downloadjs";
 
 export default function FileSelector() {
@@ -26,23 +26,16 @@ export default function FileSelector() {
             pages.forEach((page) => {
               // // Draw a string of text diagonally across the first page
               const { width, height } = page.getSize();
-
+              console.log(height);
               page.drawText("Este es el texto de trazabilidad." + (i + 1), {
                 x: 5,
-                y: height / 2 + 100,
-                size: 10,
+                y: (height / 2) + 300,
+                size: 50,
                 font: helveticaFont,
-                color: rgb(0.95, 0.1, 0.1),
+                color: rgb(0.9, 0.9, 0.9) ,
+                rotate: degrees(-45),
               });
 
-              page.drawRectangle({
-                x: 40,
-                y: 450,
-                width: 200,
-                height: 40,
-                borderColor: rgb(0.95, 0.1, 0.1),
-                borderWidth: 1.5,
-              });
             });
 
             const pdfBytes = await pdfDoc.save();
