@@ -26,7 +26,6 @@ export default function FileSelector() {
             pages.forEach((page) => {
               // // Draw a string of text diagonally across the first page
               const { width, height } = page.getSize();
-              console.log(height);
               page.drawText("Este es el texto de trazabilidad." + (i + 1), {
                 x: 5,
                 y: (height / 2) + 300,
@@ -34,6 +33,7 @@ export default function FileSelector() {
                 font: helveticaFont,
                 color: rgb(0.9, 0.9, 0.9) ,
                 rotate: degrees(-45),
+                opacity: 0.4,
               });
 
             });
@@ -41,6 +41,7 @@ export default function FileSelector() {
             const pdfBytes = await pdfDoc.save();
 
             download(pdfBytes, "Archivo" + (i + 1) + ".pdf", "application/pdf");
+      
           });
         }
       }
