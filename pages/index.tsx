@@ -14,9 +14,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-black">
-          Trazabilidad 
           <span className="mx-3 underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-             anti inteligencia
+             Sistema de Trazabilidad
           </span>
         </h1>
 
