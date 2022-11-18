@@ -6,6 +6,7 @@ export default function FileSelector() {
   const [fileSelected, setFileSelected] = useState<any>(null);
   const [quantity, setQuantity] = useState<number>();
   const [loading, setLoading] = useState(false);
+  const [waterMarkText,setWaterMarkText] = useState<string>("");
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -26,7 +27,7 @@ export default function FileSelector() {
             pages.forEach((page) => {
               // // Draw a string of text diagonally across the first page
               const { width, height } = page.getSize();
-              page.drawText("Este es el texto de trazabilidad." + (i + 1), {
+              page.drawText(`${waterMarkText} ${i+1}`, {
                 x: 5,
                 y: (height / 2) + 300,
                 size: 50,
@@ -49,7 +50,7 @@ export default function FileSelector() {
     setLoading(false);
   };
 
-  const changeAge = ({ target }: any) => {
+  const changeQuantity = ({ target }: any) => {
     setQuantity(target.value);
   };
 
@@ -69,7 +70,13 @@ export default function FileSelector() {
         type="number"
         value={quantity}
         min={0}
-        onChange={changeAge}
+        onChange={changeQuantity}
+      ></input>
+      <label className="text-black">Texto marca de agua:</label>
+      <input
+        type="text"
+        value={waterMarkText}
+        onChange={(e)=>setWaterMarkText(e.target.value)}
       ></input>
 
       <button
